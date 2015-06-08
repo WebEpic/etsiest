@@ -8,7 +8,9 @@ Etsy.api_key = ENV['ETSY_KEY']
 get '/search' do
   @results = Etsy::Request.get('/listings/active',
              :includes => ['Images', 'Shop'],
-             :keywords => 'whiskey')
+             #:keywords => 'whiskey') 
+             :keywords => params['query'])
+  #binding.pry
   erb :index
 end
 
